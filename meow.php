@@ -198,5 +198,78 @@ href="http://www.anti-robot.org" style="text-decoration: none;">www.anti-robot.o
 </table>
 </body>
 
+<?php
+// If you wish to have the meows tweeted whenever someone plays the meow bot, configure this portion:
+// uncomment and configure for you Twitter account.
+/*
+// Tweet the content as well:
+require_once('tweetbots/twitteroauth/twitteroauth/twitteroauth.php');
+
+// $userdat = $_GET["user"];
+// userdat holds twitter tokens, etc.
+$userdat = catslappy;
+$incfile = "tweetbots/tweeter/users/{$userdat}.php";
+include "$incfile";
+
+
+//+++++++++++++++++++++++++++++++++++++++++ Optional: +++++++++++++++++++
+// function clean($string) {
+//  $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+//  return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+// }
+
+// $tweetStr = clean($string1);
+//++++++++++++++++++++++++++++++++++++++++_ Optional: +++++++++++++++++++++++++
+
+function seo_friendly_url($string){
+//    $string = str_replace(array('[\', \']'), '', $string);
+//    $string = preg_replace('/\[.*\]/U', '', $string);
+    $string = preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $string);
+//    $string = htmlentities($string, ENT_COMPAT, 'utf-8');
+//    $string = preg_replace('/&([a-z])(acute|uml|circ|grave|ring|cedil|slash|tilde|caron|lig|quot|rsquo);/i', '\\1', $string );
+//    $string = preg_replace(array('/[^a-z0-9]/i', '/[-]+/') , '-', $string);
+   return strtolower(trim($string, '-'));
+ }
+
+$tweetStr = seo_friendly_url($string1);
+//++++++++++++++++++++++++++++++++++++++++++++++++++ Optional: +++++++++++++
+
+// Trim to be > 137 characters plus ellipses:
+// $str = $tweetStr;
+// if( strlen( $tweetStr) > 137) {
+//    $str = explode( "\n", wordwrap( $tweetStr, 137));
+//    $str = $str[0] . '...';
+// }
+// echo $str;
+
+// $str = mb_strimwidth("$tweetStr", 0, 137, "...");
+
+// $str = "$string1"." "."$string2";
+$str = "$tweetStr"." "."$string2";
+
+// Make the string an array: 
+$theTweet[] = $str;
+
+// Connect to Twitter:
+$connection = new TwitterOAuth($consumer_key ,$consumer_secret , $access_key , $access_secret );
+
+// Post Tweet:
+// $connection->post('statuses/update', array('status' => $tweetStr));
+$resultArray = $connection->post('statuses/update', array('status' => $theTweet));
+
+// Log the Twitter posting results:
+date_default_timezone_set('America/New_York');
+$tweetContentDate = date('m/d/Y h:i:s a', time());
+
+if ($connection->http_code == 200) {
+		error_log('Tweeted: '.$str." on ".$tweetContentDate."\n", 3, "tweeterErrors.log");
+	} else {
+		error_log('Error posting to Twitter: '.$resultArray->http_code." on ".$tweetContentDate."\n", 3, "tweeterErrors.log");
+	}
+
+*/
+?>
+
 
 </html>
